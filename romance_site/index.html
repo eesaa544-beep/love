@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Since 13 December — Our Story</title>
+  <link rel="preconnect" href="https://player.vimeo.com">
+  <link rel="dns-prefetch" href="https://player.vimeo.com">
+  <link rel="preload" as="script" href="https://player.vimeo.com/api/player.js">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <!-- Vimeo Background -->
+  <div class="video-bg">
+    <!-- Replace YOUR_VIMEO_ID below with your actual Vimeo numeric ID -->
+    <iframe
+      id="bg-video"
+      src="https://player.vimeo.com/video/YOUR_VIMEO_ID?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <!-- Ambient Swirling Glow -->
+  <div class="swirl-glow" aria-hidden="true"></div>
+
+  <!-- Floating Hearts Overlay -->
+  <div class="hearts-overlay" aria-hidden="true"></div>
+
+  <!-- Page Content -->
+  <main class="container">
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        <span class="name">for us</span>
+      </div>
+      <button class="btn ghost" id="musicToggle" aria-pressed="false">Play Music</button>
+    </header>
+
+    <section class="hero">
+      <h1 class="title">Since <span id="since-label"></span></h1>
+      <div class="timer" id="timer">
+        <div class="unit"><div class="value shimmer" id="days">0</div><div class="label">Days</div></div>
+        <div class="sep">:</div>
+        <div class="unit"><div class="value shimmer" id="hours">00</div><div class="label">Hours</div></div>
+        <div class="sep">:</div>
+        <div class="unit"><div class="value shimmer" id="minutes">00</div><div class="label">Minutes</div></div>
+        <div class="sep">:</div>
+        <div class="unit"><div class="value shimmer" id="seconds">00</div><div class="label">Seconds</div></div>
+      </div>
+      <p class="subtitle">and counting…</p>
+
+      <div class="cta-row">
+        <button class="btn primary">Open Letter</button>
+        <button class="btn outline">Gallery</button>
+      </div>
+    </section>
+
+    <section class="poem">
+      <p>
+        In a hush of red and gold,<br/>
+        time learned our names.<br/>
+        Every second since that day—<br/>
+        a quiet spark turning into home.
+      </p>
+    </section>
+  </main>
+
+  <!-- Audio (your existing track) -->
+  <audio id="bg-audio" preload="auto" src="assets/Saiyaara.mp3"></audio>
+
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script>
+    // If you want to force cover-fit for all screens
+    (function fitVimeo(){
+      const iframe = document.getElementById('bg-video');
+      function resize(){
+        const vw = window.innerWidth, vh = window.innerHeight;
+        // Keep the iframe big enough to cover
+        const aspect = 16/9;
+        let w = vw, h = vw/aspect;
+        if(h < vh){ h = vh; w = vh*aspect; }
+        iframe.style.width = w * 1.1 + 'px';
+        iframe.style.height = h * 1.1 + 'px';
+        iframe.style.transform = 'translate(-50%, -50%)';
+      }
+      resize();
+      window.addEventListener('resize', resize);
+    })();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
